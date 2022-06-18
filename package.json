@@ -1,0 +1,14 @@
+{
+  "name": "sui-calendar",
+  "version": "1.0.0",
+  "description": "fuck, that is just a suicalendar, what did you want to see?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "suichanwa",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
