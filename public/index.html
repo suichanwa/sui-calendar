@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sui Calendar</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/styles/tailwind.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="h-full">
+    <div class="container bg-background/80 backdrop-blur-sm">
+        <div class="wm text-2xl font-medium text-secondary-dark tracking-wide">
+          Did you know what month is today? Yes, today is:
+          <div class="sm text-primary-dark font-bold"></div>
+        </div>
+
+      <div class="calendar backdrop-blur-md bg-white/90 rounded-xl shadow-2xl">
+        <div class="month bg-primary text-primary-foreground rounded-t-xl">
+          <i class="fas fa-angle-left prev hover:bg-primary-dark transition-colors duration-200 p-3 rounded-full"></i>
+          <div class="date">
+            <h1 class="text-3xl font-bold tracking-wider mb-2">sui's calendar</h1>
+            <p class="text-lg text-primary-foreground/90">すいせいは今日かわいいいい</p>
+          </div>
+          <i class="fas fa-angle-right next hover:bg-primary-dark transition-colors duration-200 p-3 rounded-full"></i>
+        </div>
+        
+        <div class="weekdays bg-gray-100/50">
+          <div class="text-primary font-medium">suiday</div>
+          <div class="text-primary font-medium">suituesday</div>
+          <div class="text-primary font-medium">suiwednesday</div>
+          <div class="text-primary font-medium">suithursday</div>
+          <div class="text-primary font-medium">suifriday</div>
+          <div class="text-primary font-medium">suisaturday</div>
+          <div class="text-primary font-medium">suisunday</div>
+        </div>
+        
+        <div class="days bg-white/70"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
