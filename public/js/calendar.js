@@ -10,6 +10,29 @@ export class Calendar {
       "suiday", "suituesday", "suiwednesday", "suithursday",
       "suifriday", "suisaturday", "suisunday", "suisui"
     ];
+
+    // Initialize sounds
+    this.sounds = {
+      click: new Audio('/sounds/click.mp3'),
+      open: new Audio('/sounds/open.mp3'),
+      save: new Audio('/sounds/save.mp3')
+    };
+
+    // Set volume levels
+    Object.values(this.sounds).forEach(sound => {
+      sound.volume = 0.3;
+    });
+  }
+
+  async playSound(soundName) {
+    try {
+      if (this.sounds[soundName]) {
+        this.sounds[soundName].currentTime = 0;
+        await this.sounds[soundName].play();
+      }
+    } catch (error) {
+      console.log('Sound playback failed:', error);
+    }
   }
 
   renderCalendar() {
@@ -45,23 +68,20 @@ export class Calendar {
 
     let days = "";
 
-    // Previous month's days
-    // Current month's days section in renderCalendar() method:
-for (let i = 1; i <= lastDay; i++) {
-  const dateKey = `${this.date.getFullYear()}-${this.date.getMonth() + 1}-${i}`;
-  // Change this line to check the notices from localStorage
-  const notices = JSON.parse(localStorage.getItem('calendarNotices')) || {};
-  const hasNotice = notices[dateKey] ? '<i class="fas fa-star text-yellow-400 ml-1"></i>' : '';
-  
-  if (
-    i === new Date().getDate() &&
-    this.date.getMonth() === new Date().getMonth()
-  ) {
-    days += `<div class="today" data-date="${dateKey}">${i}${hasNotice}</div>`;
-  } else {
-    days += `<div data-date="${dateKey}">${i}${hasNotice}</div>`;
-  }
-}
+    for (let i = 1; i <= lastDay; i++) {
+      const dateKey = `${this.date.getFullYear()}-${this.date.getMonth() + 1}-${i}`;
+      const notices = JSON.parse(localStorage.getItem('calendarNotices')) || {};
+      const hasNotice = notices[dateKey] ? '<i class="fas fa-star text-yellow-400 ml-1"></i>' : '';
+      
+      if (
+        i === new Date().getDate() &&
+        this.date.getMonth() === new Date().getMonth()
+      ) {
+        days += `<div class="today" data-date="${dateKey}">${i}${hasNotice}</div>`;
+      } else {
+        days += `<div data-date="${dateKey}">${i}${hasNotice}</div>`;
+      }
+    }
 
     // Next month's days
     for (let j = 1; j <= nextDays; j++) {
@@ -75,20 +95,22 @@ for (let i = 1; i <= lastDay; i++) {
     this.addDayClickHandlers();
   }
 
-  addDayClickHandlers() {
+    addDayClickHandlers() {
     const dayElements = document.querySelectorAll('.days div');
     dayElements.forEach(day => {
-      day.addEventListener('click', () => {
+        day.addEventListener('click', async () => {
         const dateKey = day.dataset.date;
         if (dateKey) {
-          const event = new CustomEvent('dayClick', {
+            await this.playSound('click'); // Add click sound
+            await this.playSound('open');  // Keep dialog open sound
+            const event = new CustomEvent('dayClick', {
             detail: { dateKey: dateKey }
-          });
-          document.dispatchEvent(event);
+            });
+            document.dispatchEvent(event);
         }
-      });
+        });
     });
-  }
+    }
 
   init() {
     // Initialize weekday headers
@@ -98,18 +120,21 @@ for (let i = 1; i <= lastDay; i++) {
       .join('');
 
     // Add navigation event listeners
-    document.querySelector(".prev").addEventListener("click", () => {
+    document.querySelector(".prev").addEventListener("click", async () => {
+      await this.playSound('click');
       this.date.setMonth(this.date.getMonth() - 1);
       this.renderCalendar();
     });
 
-    document.querySelector(".next").addEventListener("click", () => {
+    document.querySelector(".next").addEventListener("click", async () => {
+      await this.playSound('click');
       this.date.setMonth(this.date.getMonth() + 1);
       this.renderCalendar();
     });
 
     document.addEventListener('noticesUpdated', () => {
-    this.renderCalendar();
+      this.playSound('save');
+      this.renderCalendar();
     });
 
     // Initial render
