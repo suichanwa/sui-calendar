@@ -4,14 +4,19 @@ const app = express();
 
 const port = process.env.PORT || 8080;
 
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve static files from root directory
+app.use(express.static(__dirname));
 
-//here where the photos are getting from oke
+// Routes for static assets
 app.use('/sui', express.static(path.join(__dirname, 'sui')));
-app.use('/js', express.static(path.join(__dirname, 'public/js')));
-app.use('/css', express.static(path.join(__dirname, 'public/css')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
+app.use('/css', express.static(path.join(__dirname, 'css')));
+app.use('/sounds', express.static(path.join(__dirname, 'sounds')));
 
-app.get('/', (req, res) => { res.sendFile(path.join(__dirname, 'public', 'index.html')); });
+// Serve index.html from root
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 app.listen(port, () => {
     console.log(`Calendar app is running at http://localhost:${port}`);

@@ -1,15 +1,16 @@
 const CACHE_NAME = 'sui-calendar-v1';
+
 const ASSETS_TO_CACHE = [
-  '/',
-  '/css/main.css',
-  '/js/app.js',
-  '/js/calendar.js',
-  '/js/dialog.js',
-  '/sounds/click.mp3',
-  '/sounds/save.mp3',
-  '/sounds/open.mp3',
-  '/sui/suibk.jpg',
-  '/sui/suieyes.jpg'
+  './',
+  './css/main.css',
+  './js/app.js',
+  './js/calendar.js',
+  './js/dialog.js',
+  './sounds/click.mp3',
+  './sounds/save.mp3',
+  './sounds/open.mp3',
+  './sui/suibk.jpg',
+  './sui/suieyes.jpg'
 ];
 
 self.addEventListener('install', (event) => {

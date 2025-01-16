@@ -13,7 +13,7 @@ html {
 }
 
 .container {
-  background-image: url("../../sui/suibk.jpg");
+  background-image: url("../sui/suibk.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
