@@ -2,7 +2,7 @@
 <html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Sui Calendar</title>
     <link
       rel="stylesheet"
@@ -12,8 +12,8 @@
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link href="/styles/tailwind.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" />
+    <link href="/css/main.css" rel="stylesheet">
+    <script type="module" src="/js/app.js"></script>
   </head>
   <body class="h-full">
     <div class="container bg-background/80 backdrop-blur-sm">
@@ -40,12 +40,33 @@
           <div class="text-primary font-medium">suifriday</div>
           <div class="text-primary font-medium">suisaturday</div>
           <div class="text-primary font-medium">suisunday</div>
+          <div class="text-primary font-medium">suisui</div>
         </div>
         
         <div class="days bg-white/70"></div>
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <div id="notice-dialog" class="notice-dialog">
+      <div class="notice-form">
+        <div class="notice-header">
+          <h3>Notice for <span id="selected-date" class="text-blue-lighter"></span></h3>
+          <button id="close-dialog" class="notice-close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <textarea 
+          id="notice-text" 
+          class="notice-textarea" 
+          placeholder="Write your notice here..."
+          spellcheck="false"
+        ></textarea>
+        <div class="notice-buttons">
+          <button id="save-notice" class="notice-button">
+            <i class="fas fa-save mr-2"></i>Save Notice
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

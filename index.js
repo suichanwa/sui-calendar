@@ -8,6 +8,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //here where the photos are getting from oke
 app.use('/sui', express.static(path.join(__dirname, 'sui')));
+app.use('/js', express.static(path.join(__dirname, 'public/js')));
+app.use('/css', express.static(path.join(__dirname, 'public/css')));
 
 app.get('/', (req, res) => { res.sendFile(path.join(__dirname, 'public', 'index.html')); });
 
