@@ -76,24 +76,29 @@ html {
 }
 
 /* Mobile Breakpoint */
+/* Mobile Breakpoint */
 @media (max-width: 500px) {
   html {
-    font-size: 56.25%; /* 9px base for better readability */
+    font-size: 52.5%; /* Slightly smaller base font size for mobile */
   }
   
   .container {
-    padding: 1.5rem 1rem;
-    gap: 1rem;
+    padding: 1rem;
+    min-height: 100dvh; /* Use dynamic viewport height */
+    gap: 0.5rem;
   }
 
   .wm {
-    font-size: 1.4rem;
-    padding: 0.8rem 1.2rem;
-    max-width: 95%;
+    position: relative;
+    padding: 0.8rem 1rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    width: 95%;
+    backdrop-filter: blur(4px);
   }
 
   .sm {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 }
 

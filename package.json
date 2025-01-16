@@ -4,7 +4,7 @@
   "description": "fuck, that is just a suicalendar, what did you want to see?",
   "main": "index.js",
   "scripts": {
-        "dev": "nodemon index.js",
+    "dev": "nodemon index.js",
     "start": "node index.js",
     "build": "tailwindcss -i ./styles/tailwind.css -o ./public/css/main.css --minify"
   },
